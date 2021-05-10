@@ -136,7 +136,6 @@ int main(int argc, char *argv[]){
     unordered_map<string, vector<string>> actor_movie;
     unordered_map<string, Actor> actor;
 
-
     if(argc < 4){
         cout << "Incorrect Arguments Passed" << endl;
         exit(1);
@@ -159,15 +158,16 @@ int main(int argc, char *argv[]){
     cout << " --------- " << endl;
 
 /////////////////////////////////////////////////////////////////
-    /*
+
     Graph imdb_b;
+    cout << "- Part B -" << endl;
     imdb_b.readFile((string)filename);
-    Actor *startb = imdb_b.retrieveNode(startActor);
+    Actor *startb = imdb_b.retrieveNode("Kevin Bacon (I)");
     Actor *targetb = imdb_b.retrieveNode(targetActor);
     Actor *end = imdb_b.breadthFirstSearch(startb, targetb, true);
-    cout << "- Part B -" << endl;
     imdb_b.displayPath(end);
-     */
+    cout << " --------- " << endl;
+
 /////////////////////////////////////////////////////////////////
 
     Graph imdb_c;
@@ -177,7 +177,7 @@ int main(int argc, char *argv[]){
     Actor *end_c = imdb_c.retrieveNode("Don Ackerman (III)");
     imdb_c.breadthFirstSearch(start_c, end_c, false);
     imdb_c.displayPath(end_c);
-
+    cout << " --------- " << endl;
 
 
 
