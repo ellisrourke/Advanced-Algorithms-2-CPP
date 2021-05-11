@@ -1,6 +1,8 @@
 #include <iostream>
 using namespace std;
 #include <unordered_map>
+#include <vector>
+#include <ctime>
 
 class DisjointSet{
     int n;
@@ -13,12 +15,6 @@ public:
         rank = new int[n];
         createSet(0);
     }
-
-    //void createSet(){
-   //    for(int i=0; i<n; i++){
-    //        parent[i] = i;
-    //    }
-   // }
 
     void createSet(int v){
         parent[v] = v;
@@ -48,50 +44,40 @@ public:
     }
 };
 
-struct Point{
-    int x;
-    int y;
-};
 
-void random_maze(DisjointSet &p){
-    int rows = 55;
-    int collumns = 88;
-    int start = 0 * 0;
-    int end = rows-1 * collumns-1;
-    int numCells = rows * collumns;
-
-    for(int i=1; i< rows; i++){
-        for(int j=1; j<collumns; j++){
-            p.createSet(i*j);
-            //DisjointSet x;
-            //x.createSet(i * j);
-            //sets[i*j] = x;
-        }
-    }
-
-    cout << p.findItem(1) << endl;
-    cout << "test" << endl;
-}
 
 int main(){
-        DisjointSet obj(5);
-        ///obj.unionSet(0, 2);
-       //obj.unionSet(4, 2);
-        //obj.unionSet(3, 1);
+    int rows = 10;
+    int collumns = 10;
+    vector<vector<DisjointSet>> maze;
 
-        random_maze(obj);
+    int start = 1;
+    int end = rows * collumns;
+    int numCells = rows * collumns;
 
-        /*
-        if (obj.findItem(4) == obj.findItem(0))
-            cout << "Yes\n";
-        else
-            cout << "No\n";
-        if (obj.findItem(1) == obj.findItem(0))
-            cout << "Yes\n";
-        else
-            cout << "No\n";
+    for(int i=0; i< rows; i++){
+        for(int j=0; j<collumns; j++){
+            DisjointSet x((collumns*i + j*collumns/rows)+1);
+            maze[i][j] = x;
+            cout << (collumns*i + j*collumns/rows)+1 << endl;
+        }
+    }
+    ///obj.unionSet(0, 2);
+    //obj.unionSet(4, 2);
+    //obj.unionSet(3, 1);
+    /*
+    srand (time(NULL));
+    int count = 100;
+    while(count > 0){
+        int x = (rand() % rows) + 1 ;
+        int y = (rand() % collumns) + 1 ;
+        cout << "x " << x << " y " << y << endl;
+        count--;
+        //int setNumber = x * y
+    }
+    */
+    cout << "End" << endl;
 
-        return 0;
-        */
+
 }
 //https://betterprogramming.pub/using-disjoint-set-union-find-to-build-a-maze-generator-7462ea3b8632
