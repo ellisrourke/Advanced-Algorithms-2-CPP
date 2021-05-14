@@ -44,25 +44,21 @@ public:
     }
 };
 
-
-
 int main(){
     int rows = 10;
     int collumns = 10;
-    vector<vector<DisjointSet>> maze;
-
+    //vector<vector<DisjointSet>> maze;
+    vector<DisjointSet> maze;
     int start = 1;
     int end = rows * collumns;
     int numCells = rows * collumns;
 
-    for(int i=0; i< rows; i++){
-        for(int j=0; j<collumns; j++){
-            DisjointSet x((collumns*i + j*collumns/rows)+1);
-            maze[i][j] = x;
-            cout << (collumns*i + j*collumns/rows)+1 << endl;
-        }
+    for(int i=0; i< rows*collumns; i++){
+        DisjointSet x(i);
+        maze.push_back(x);
     }
-    ///obj.unionSet(0, 2);
+
+    maze.unionSet(0, 2);
     //obj.unionSet(4, 2);
     //obj.unionSet(3, 1);
     /*
