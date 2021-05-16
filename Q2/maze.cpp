@@ -48,17 +48,22 @@ int main(){
     int rows = 10;
     int collumns = 10;
     //vector<vector<DisjointSet>> maze;
-    vector<DisjointSet> maze;
+
     int start = 1;
     int end = rows * collumns;
     int numCells = rows * collumns;
-
-    for(int i=0; i< rows*collumns; i++){
-        DisjointSet x(i);
-        maze.push_back(x);
-    }
+    DisjointSet maze(numCells);
+    //for(int i=0; i< rows*collumns; i++){
+    //    DisjointSet x(i);
+    //    maze.push_back(x);
+    //}
 
     maze.unionSet(0, 2);
+    maze.unionSet(2, 4);
+    maze.unionSet(4, 8);
+    maze.unionSet(8, 10);
+    cout << maze.findItem(10);
+
     //obj.unionSet(4, 2);
     //obj.unionSet(3, 1);
     /*
