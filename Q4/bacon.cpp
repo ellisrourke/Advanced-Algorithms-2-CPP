@@ -1,12 +1,7 @@
-#include <unordered_map>
-#include <string>
-#include <vector>
-#include <queue>
-#include <set>
 #include <iostream>
-#include <sstream>
+#include <queue>
 #include <fstream>
-#include <chrono>
+#include <sstream>
 #include <bits/stdc++.h>
 
 using namespace std;
@@ -38,6 +33,7 @@ public:
     Graph () : graph(){}
     Actor *retrieveNode(string name){
         if(graph.find(name) == graph.end()){
+            cout << "Node not found in graph" << endl;
             return NULL;
         }
         return graph[name];
@@ -193,12 +189,6 @@ int main(int argc, char *argv[]){
     imdb_c.readFile((string)filename);
     Actor *start_c = imdb_c.retrieveNode("Christian Slate");
     Actor *end_c = imdb_c.retrieveNode("Catherine Zeta-Jones");
-
-    for (auto const& name : imdb_c.graph)
-    {
-        std::cout << name.first << endl;
-    }
-
 
     cout << "start " << start_c->name << endl;
     cout << "end " << end_c->name << endl;
