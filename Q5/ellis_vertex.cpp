@@ -31,7 +31,7 @@ void recursive_depthFirstSearch(unordered_map<int, Node> &graph, set<int> &curre
         exclude.insert(list);
     }
 
-    int branches = depth * log(depth + 3) + 5;
+    int branches = depth * log(depth + 3) + 10;
     if (depth == 1) {
         branches = 20;
     }
@@ -121,13 +121,13 @@ void depthFirstSearch(unordered_map<int, Node> &graph){
         current_cover.insert(e.first);
     }
 
-    for(int i=0; i<10; i++){
+    for(int i=0; i<graph.size()-1; i++){
         int randomNode = (rand() % current_cover.size()) - 1;
         auto it = current_cover.begin();
         advance(it, randomNode);
         auto node = graph.find(*it);
         if(node->second.score < min_node_score){
-            cout << "better random is " << min_node << endl;
+            //cout << "better random is " << node->second.score << endl;
             min_node_score = node->second.score;
             min_node = *it;
         }
@@ -137,6 +137,72 @@ void depthFirstSearch(unordered_map<int, Node> &graph){
     recursive_depthFirstSearch(graph, current_cover, min_node, best_cover, exclude_cover, &min_cover_size, 1, &reset_penalty);
 }
 
+void greedy(unordered_map<int, Node> &graph, set<int> best_cover){
+	unsigned long long iteration = 0;
+	int n = 10;
+	int current_best = INT_MAX;
+	int random = 20;
+	double penalty_factor = 0.05;
+	double penalty_max = 5.0;
+	int penalty_cooling = penalty_max / penalty_factor + 5;
+	cout << "[?] Starting Greedy Search" << endl;
+	
+	for(int i = 0; i<n; i++){
+		unordered_map<int, Node> copy = (graph);
+		set<int> current_cover;
+		while(!copy.empty()){
+			iteration++;
+			int trials = 3;
+			int min_cover = 0;
+			double min_score = (double)INT_MAX;
+			for(int t=0; t < trials; t++){
+				int r = rand() % (copy.size());
+				auto it = copy.begin();
+				advance(it, r);
+				if(it->second.score < min_score){
+					min_score = it->second.score;
+					min_cover = it->first;
+				}
+			}
+			copy.erase(min_cover);
+			if(copy.size() <= 0) break;
+			current_cover.insert(min_cover);
+			auto penalty = graph.find(min_cover);
+
+
+			penalty->second.pnFactor = min(penalty_max, penalty->second.pnFactor + penalty_factor);
+
+			for(auto i = copy.begin(); i != copy.end(); advance(i, 1)){
+				i->second.list.erase(min_cover);
+				i->second.degree = i->second.list.size();
+				i->second.score = (double)(i->second.degree) * i->second.pnFactor;	
+			}
+
+			auto it = copy.begin();
+			while(it != copy.end()){
+				if(it->second.degree == 0){
+					it = copy.erase(it);
+				} else {
+					advance(it, 1);
+				}
+				if(copy.size() <= 0) break;
+			}
+		}
+		if(current_cover.size() < current_best){
+			best_cover = set<int>(current_cover.begin(), current_cover.end());
+			current_best = best_cover.size();
+			cout << "Best: " << current_best << endl;
+		}
+		
+		if(i % penalty_cooling == 0){
+			for(auto v = copy.begin(); v!= copy.end(); advance(v, 1)){
+				v->second.pnFactor = 1.0;
+			}
+		}
+	}
+	
+
+}
 
 int main(int argc, char * argv[]){
     srand(time(NULL));
@@ -207,6 +273,7 @@ int main(int argc, char * argv[]){
     cout << "[?] Number of vertices " << V << endl;
     file.close();
     cout << "[?] Closed file" << endl;
-
-    depthFirstSearch(graph);
+	set<int> cover;
+    //depthFirstSearch(graph);
+	greedy(graph, cover);
 }
