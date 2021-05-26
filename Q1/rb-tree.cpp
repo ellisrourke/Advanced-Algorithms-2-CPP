@@ -349,7 +349,7 @@ int main(){
     RBTree bst;
     int nums[] = {3,9,6,44,23,12,6,34,5,98};
     for(int i=0; i < 10; i++){ bst.insert(nums[i]); }
-    bst.deleteNode(6);
+    //bst.deleteNode(6);
     bst.inorder();
     cout << endl;
     bst.k_smallest(2);

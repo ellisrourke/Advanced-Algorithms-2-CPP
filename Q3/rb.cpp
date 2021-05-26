@@ -3,16 +3,14 @@
 #include <vector>
 #include <stdlib.h>
 #include <time.h>
+#include <bits/stdc++.h>
+#include <chrono>
 
 using namespace std;
 typedef long long lld;
 typedef unsigned long long llu;
 using namespace std;
 
-// Red Black Tree implementation in C++
-// Author: Algorithm Tutor
-// Tutorial URL: https://algorithmtutor.com/Data-Structures/Tree/Red-Black-Trees/
-// data structure that represents a node in the tree
 struct Node {
     int data; // holds the key
     Node *parent; // pointer to the parent
@@ -645,7 +643,7 @@ public:
 
 
 int main() {
-    int n = 1000;
+    int n = 600000;
     srand(time(0));
     int nums[n];
 
@@ -653,37 +651,38 @@ int main() {
         nums[i] = i;
     };
 
-    cout << "---- Red Black Tree ----" << endl;
-
     RBTree bst;
+    auto begin = std::chrono::high_resolution_clock::now();
     for(int i=0; i < n; i++){ bst.insert(nums[i]); }
+    auto end = std::chrono::high_resolution_clock::now();
+    auto elapsed = std::chrono::duration_cast<std::chrono::nanoseconds>(end - begin);
+    cout << "RB Insert : " << fixed << elapsed.count() * 1e-9 << setprecision(5) << " sec " << endl;
 
+
+    begin = std::chrono::high_resolution_clock::now();
     for(int i=0; i < n; i++){ bst.searchTree(nums[i]); }
+    end = std::chrono::high_resolution_clock::now();
+    elapsed = std::chrono::duration_cast<std::chrono::nanoseconds>(end - begin);
+    cout << "RB Search : " << fixed << elapsed.count() * 1e-9 << setprecision(5) << " sec " << endl;
 
+    begin = std::chrono::high_resolution_clock::now();
     for(int i=0; i < n; i++){ bst.deleteNode(nums[i]); }
-
-    //bst.prettyPrint();
-    cout << "------------------------" << endl << endl;
-    cout << "------- VEB Tree -------" << endl;
+    end = std::chrono::high_resolution_clock::now();
+    elapsed = std::chrono::duration_cast<std::chrono::nanoseconds>(end - begin);
+    cout << "RB Delete : " << fixed << elapsed.count() * 1e-9 << setprecision(5) << " sec " << endl;
 
     vEB tree(n);
+    begin = std::chrono::high_resolution_clock::now();
     for(int i=0; i < n; i++){ tree.insert(nums[i]); }
+    end = std::chrono::high_resolution_clock::now();
+    elapsed = std::chrono::duration_cast<std::chrono::nanoseconds>(end - begin);
+    cout << "VEB Insert : " << fixed << elapsed.count() * 1e-9 << setprecision(5) << " sec " << endl;
+
+    begin = std::chrono::high_resolution_clock::now();
     for(int i=0; i < n; i++){ tree.remove(nums[i]); }
-    /*
-    //tree.insert(14);
-    std::cout << "Successor of 2 is\n";
-    std::cout << tree.successor(2) << '\n';
-    tree.remove(13);
-    std::cout << "Removing 13. Now successor of 13 is\n";
-    std::cout << tree.successor(13) << '\n';
-    //tree.remove(14);
-    std::cout << "Removing 14. Now successor of 13 is\n";
-    std::cout << tree.successor(13) << '\n';
-    std::cout << "16, which is universe size, means no successor.\n";
-*/
-
-
-    cout << "------------------------" << endl;
+    end = std::chrono::high_resolution_clock::now();
+    elapsed = std::chrono::duration_cast<std::chrono::nanoseconds>(end - begin);
+    cout << "VEB Remove : " << fixed << elapsed.count() * 1e-9 << setprecision(5) << " sec " << endl;
 
     return 0;
 };
