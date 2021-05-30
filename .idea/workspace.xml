@@ -1,19 +1,42 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="CMakeRunConfigurationManager" shouldGenerate="true" shouldDeleteObsolete="true">
+    <generated>
+      <config projectName="Advanced_Algorithms_Assignment_2" targetName="Advanced_Algorithms_Assignment_2" />
+    </generated>
+  </component>
+  <component name="CMakeSettings">
+    <configurations>
+      <configuration PROFILE_NAME="Debug" CONFIG_NAME="Debug" ENABLED="true" />
+    </configurations>
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="4657cef6-394b-4d88-9af7-a9c7f84c6541" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/.name" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/Advanced-Algorithms-Assignment-22.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AdvancedAlgorithms_report_2.docx" beforeDir="false" afterPath="$PROJECT_DIR$/AdvancedAlgorithms_report_2.docx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Q2/m2.exe" beforeDir="false" afterPath="$PROJECT_DIR$/Q2/m2.exe" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Q2/maze.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Q2/maze.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Q2/maze.exe" beforeDir="false" afterPath="$PROJECT_DIR$/Q2/maze.exe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Q2/maze2.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Q2/maze2.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Q4/bacon2.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Q4/bacon2.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Q4/bacon2.exe" beforeDir="false" afterPath="$PROJECT_DIR$/Q4/bacon2.exe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Q5/e.exe" beforeDir="false" afterPath="$PROJECT_DIR$/Q5/e.exe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Q5/ellis_vertex.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Q5/ellis_vertex.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Q5/test.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Q5/test.cpp" afterDir="false" />
     </list>
-    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="FileEditorManager">
-    <leaf />
+  <component name="ClangdSettings">
+    <option name="formatViaClangd" value="false" />
   </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="CMakeBuildProfile:Debug" />
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
@@ -39,6 +62,7 @@
     <option name="width" value="974" />
     <option name="height" value="1057" />
   </component>
+  <component name="ProjectId" id="1t3CN28V05fyC6p7BBQYR152oSB" />
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
@@ -63,24 +87,50 @@
       </pane>
     </panes>
   </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
   <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="cf.first.check.clang-format" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="nodejs_package_manager_path" value="npm" />
   </component>
-  <component name="RunDashboard">
-    <option name="ruleStates">
-      <list>
-        <RuleState>
-          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
-        </RuleState>
-        <RuleState>
-          <option name="name" value="StatusDashboardGroupingRule" />
-        </RuleState>
-      </list>
-    </option>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Ellis\Documents\projects\Advanced-Algorithms-Assignment-2\Q2" />
+      <recent name="C:\Users\Ellis\Documents\projects\Advanced-Algorithms-Assignment-2\Q2\other" />
+    </key>
   </component>
+  <component name="RunManager">
+    <configuration default="true" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" PASS_PARENT_ENVS_2="true">
+      <method v="2">
+        <option name="CLION.EXTERNAL.BUILD" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Advanced_Algorithms_Assignment_2" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" WORKING_DIR="file://$PROJECT_DIR$/Q2" PASS_PARENT_ENVS_2="true" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Advanced_Algorithms_Assignment_2" RUN_TARGET_NAME="Advanced_Algorithms_Assignment_2" EXPLICIT_BUILD_TARGET_NAME="all">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" WORKING_DIR="file://$PROJECT_DIR$/Q2" PASS_PARENT_ENVS_2="true" CONFIG_NAME="Debug" RUN_PATH="$PROJECT_DIR$/Q2/m2.exe" EXPLICIT_BUILD_TARGET_NAME="all">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="GradleAppRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" PASS_PARENT_ENVS_2="true">
+      <method v="2">
+        <option name="com.jetbrains.cidr.cpp.gradle.execution.GradleNativeBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -92,6 +142,12 @@
       <option name="presentableId" value="Default" />
       <updated>1620954522160</updated>
       <workItem from="1620954523349" duration="643000" />
+      <workItem from="1621988342456" duration="848000" />
+      <workItem from="1621989348148" duration="6376000" />
+      <workItem from="1622073340728" duration="735000" />
+      <workItem from="1622096910930" duration="10390000" />
+      <workItem from="1622263256775" duration="599000" />
+      <workItem from="1622341178774" duration="1241000" />
     </task>
     <servers />
   </component>
@@ -125,7 +181,7 @@
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="1" />
+    <option name="version" value="3" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/Q2/maze.cpp">

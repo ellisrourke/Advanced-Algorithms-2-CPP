@@ -66,7 +66,7 @@ int main(){
 
     //obj.unionSet(4, 2);
     //obj.unionSet(3, 1);
-    /*
+
     srand (time(NULL));
     int count = 100;
     while(count > 0){
@@ -76,9 +76,10 @@ int main(){
         count--;
         //int setNumber = x * y
     }
-    */
+
     cout << "End" << endl;
 
 
 }
+
 //https://betterprogramming.pub/using-disjoint-set-union-find-to-build-a-maze-generator-7462ea3b8632

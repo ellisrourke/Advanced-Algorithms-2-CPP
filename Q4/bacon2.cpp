@@ -56,7 +56,7 @@ public:
         string name;
         string movie;
         int count;
-        file.open("../data/bacon3.txt");
+        file.open("../data/bacon2.txt");
 
         while(getline(file, line)){
             istringstream token(line);
@@ -123,8 +123,8 @@ int main(){
     imdb_a.readData();
     cout << "Part A:" << endl;
     cout << "-------------------------------------" << endl;
-    Actor *a_a = imdb_a.returnNode("Carmen Villa (II)");
-    Actor *a_b = imdb_a.returnNode("Pete Smith (I)");
+    Actor *a_a = imdb_a.returnNode("Kevin Bacon (I)");
+    Actor *a_b = imdb_a.returnNode("Tom Hanks");
     Breadth_first_search(imdb_a, a_a, a_b, false);
     bacon_number(imdb_a, a_b);
     cout << "-------------------------------------" << endl;
@@ -135,8 +135,8 @@ int main(){
     cout << "-------------------------------------" << endl;
     imdb_b.readData();
     cout << "data size " << imdb_b.g.size() << endl;
-    Actor *b_a = imdb_b.returnNode("Carmen Villa (II)");
-    Actor *b_b = imdb_b.returnNode("Pete Smith (I)");
+    Actor *b_a = imdb_b.returnNode("Kevin Bacon (I)");
+    Actor *b_b = imdb_b.returnNode("Kevin Bacon (I)");
     Actor *longest = Breadth_first_search(imdb_b, b_a, b_b, true);
     cout << "Longest " << longest->name << endl;
     bacon_number(imdb_b, longest);
@@ -147,8 +147,8 @@ int main(){
     cout << "-------------------------------------" << endl;
     Graph imdb_c;
     imdb_c.readData();
-    Actor *c_a = imdb_c.returnNode("Carmen Villa (II)");
-    Actor *c_b = imdb_c.returnNode("Pete Smith (I)");
+    Actor *c_a = imdb_c.returnNode("Kevin Bacon (I)");
+    Actor *c_b = imdb_c.returnNode("Alfred Hitchcock (I)");
     Breadth_first_search(imdb_c, c_a, c_b, false);
     bacon_number(imdb_c, c_b);
     cout << "-------------------------------------" << endl;

@@ -1,0 +1,26 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+C:/Users/Ellis/Documents/projects/Advanced-Algorithms-Assignment-2/Q2/maze2.cpp
+cstdlib
+-
+iostream
+-
+string
+-
+fstream
+-
+iomanip
+-
+string
+-
+time.h
+-
+vector
+-
+

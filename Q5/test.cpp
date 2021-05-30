@@ -133,12 +133,6 @@ void recursiveUtil(unordered_map<int, Vertex> &g, set<int> &cover, int remove, s
         }
     }
 
-    // Penalise the chosen vertices.
-    for (auto c : covercopy) {
-        auto V = g.find(c);
-        //V->second.pnFactor = 0.85;
-    }
-
     // For each vertex in 'cover'.
     for (int c : covercopy) {
 
@@ -189,7 +183,8 @@ void recursiveUtil(unordered_map<int, Vertex> &g, set<int> &cover, int remove, s
             V->second.pnFactor = 1.0;
         }
 
-    }////////////// for (vertex in covercopy) //////////////////
+    }
+    ////////////// for (vertex in covercopy) //////////////////
 
 }
 

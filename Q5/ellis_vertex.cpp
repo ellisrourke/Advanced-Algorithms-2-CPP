@@ -10,6 +10,7 @@
 #include <array>
 #include <ctime>
 #include <bits/stdc++.h>
+#include <chrono>
 
 using namespace std;
 
@@ -23,7 +24,7 @@ public:
     bool remove = true;
 };
 
-void recursive_depthFirstSearch(unordered_map<int, Node> &graph, set<int> &current_cover, int min_node, set<int> &best_cover, set<int> &exclude, int *min_cover_size, int depth, unsigned long long *reset_penalty) {
+void recursive_depthFirstSearch(unordered_map<int, Node> &graph, set<int> &current_cover, int min_node, set<int> &best_cover, set<int> &exclude, int *min_cover_size, int depth, unsigned long long *reset_penalty, auto &timer) {
     current_cover.erase(min_node);
     exclude.insert(min_node);
     auto remove_node = graph.find(min_node);
@@ -31,7 +32,7 @@ void recursive_depthFirstSearch(unordered_map<int, Node> &graph, set<int> &curre
         exclude.insert(list);
     }
 
-    int branches = depth * log(depth + 3) + 10;
+    int branches = depth * log(depth + 3) + 5;
     if (depth == 1) {
         branches = 20;
     }
@@ -43,10 +44,32 @@ void recursive_depthFirstSearch(unordered_map<int, Node> &graph, set<int> &curre
 
     set<int> duplicate_cover;
 
-    if (options.size() < branches) {
+    if (options.size() <= branches) {
         duplicate_cover = (options);
     } else {
-        int n = 100;
+        int n=0;
+        int trials = 3;
+        while(n < branches){
+            double min_deg = (double)INT_MAX;
+            int min_node = 0;
+            for(int i=0; i<trials; i++){
+                int randomNode = (rand() % options.size()) - 1;
+                auto it = options.begin();
+                advance(it, randomNode);
+                auto node = graph.find(*it);
+                node->second.score = (double)(node->second.degree) * node->second.pnFactor;
+                if (node->second.score < min_deg) {
+                    min_deg = node->second.score;
+                    min_node = *it;
+                }
+            }
+            duplicate_cover.insert(min_node);
+            options.erase(min_node);
+            n++;
+            }
+        }
+
+        /*int n = graph.size();
         for (int i = 0; i < branches; i++) {
             int min_node = 0;
             double min_deg = (double) INT_MAX;
@@ -63,49 +86,53 @@ void recursive_depthFirstSearch(unordered_map<int, Node> &graph, set<int> &curre
             }
             duplicate_cover.insert(min_node);
             options.erase(min_node);
-        }
-    }
+        }*/
 
     for (int it : duplicate_cover) {
         auto vector = graph.find(it);
+        bool remove = true;
         for (auto v : vector->second.list) {
             if (current_cover.find(v) == current_cover.end()) {
-                vector->second.remove = false;
+                //vector->second.remove = false;
+                remove = false;
                 break;
             }
         }
-        if (vector->second.remove == true) {
+        if (remove) {
             *reset_penalty++;
             recursive_depthFirstSearch(graph, current_cover, it, best_cover, exclude, min_cover_size, depth + 1,
-                                       reset_penalty);
+                                       reset_penalty, timer);
         }
 
-        if (*min_cover_size > current_cover.size()) {
-            best_cover = current_cover;
-            *min_cover_size = current_cover.size();
-            cout << "Found new min vertex cover: " << *min_cover_size << endl;
+        //if (depth == 1) { cout << "BestCoverSize = " << *min_cover_size << endl; }
+    }
+    if (*min_cover_size > current_cover.size()) {
+        best_cover = current_cover;
+        *min_cover_size = current_cover.size();
+        cout << "Found new min vertex cover: " << *min_cover_size << endl;
+        auto dfs_end = std::chrono::high_resolution_clock::now();
+        auto dfs_elapsed = std::chrono::duration_cast<std::chrono::nanoseconds>(dfs_end - timer);
+        cout << "elapsed: " << fixed << dfs_elapsed.count() * 1e-9 << setprecision(5) << " sec " << endl;
+    }
+
+
+    current_cover.insert(min_node);
+    exclude.erase(min_node);
+    auto r_node = graph.find(min_node);
+    for (auto it : r_node->second.list) {
+        exclude.erase(it);
+    }
+
+    if(*reset_penalty % 50 == 0){
+        for(auto it : current_cover){
+            auto node = graph.find(it);
+            node->second.pnFactor = 1.0;
         }
-
-
-        current_cover.insert(min_node);
-        exclude.erase(min_node);
-        remove_node = graph.find(min_node);
-        for (auto it : remove_node->second.list) {
-            exclude.erase(it);
-        }
-
-        if(*reset_penalty % 50 == 0){
-            for(auto it : current_cover){
-                auto node = graph.find(it);
-                node->second.pnFactor = 1.0;
-            }
-        }
-
-
     }
 }//END
 
 void depthFirstSearch(unordered_map<int, Node> &graph){
+    auto dfs_begin = std::chrono::high_resolution_clock::now();
     cout << "[?] Starting Depth First Search" << endl;
     set<int> best_cover;
     set<int> current_cover;
@@ -115,29 +142,30 @@ void depthFirstSearch(unordered_map<int, Node> &graph){
     cout << "Start min vertex cover: " << min_cover_size << endl;
 
     int min_node = 0;
-    double min_node_score = INT_MAX;
+    double min_node_score = (double)INT_MAX;
 
     for(auto e : graph){
         current_cover.insert(e.first);
     }
 
-    for(int i=0; i<graph.size()-1; i++){
-        int randomNode = (rand() % current_cover.size()) - 1;
+    for(int i=0; i<graph.size(); i++){
+        int randomNode = rand() % (current_cover.size() - 1);
         auto it = current_cover.begin();
         advance(it, randomNode);
         auto node = graph.find(*it);
         if(node->second.score < min_node_score){
-            //cout << "better random is " << node->second.score << endl;
+            cout << "better random is " << node->second.score << endl;
             min_node_score = node->second.score;
             min_node = *it;
         }
     }
 
     unsigned long long reset_penalty = 0;
-    recursive_depthFirstSearch(graph, current_cover, min_node, best_cover, exclude_cover, &min_cover_size, 1, &reset_penalty);
+    recursive_depthFirstSearch(graph, current_cover, min_node, best_cover, exclude_cover, &min_cover_size, 1, &reset_penalty, dfs_begin);
+    current_cover = best_cover;
 }
 
-void greedy(unordered_map<int, Node> &graph, set<int> best_cover){
+void greedy(unordered_map<int, Node> graph, set<int> best_cover){
 	unsigned long long iteration = 0;
 	int n = 10;
 	int current_best = INT_MAX;
@@ -191,7 +219,7 @@ void greedy(unordered_map<int, Node> &graph, set<int> best_cover){
 		if(current_cover.size() < current_best){
 			best_cover = set<int>(current_cover.begin(), current_cover.end());
 			current_best = best_cover.size();
-			cout << "Best: " << current_best << endl;
+			cout << "Found new min vertex cover: " << current_best << endl;
 		}
 		
 		if(i % penalty_cooling == 0){
@@ -207,6 +235,7 @@ void greedy(unordered_map<int, Node> &graph, set<int> best_cover){
 int main(int argc, char * argv[]){
     srand(time(NULL));
     unordered_map<int, Node> graph;
+    unordered_map<int, Node> graph_copy;
     int V;
     int E;
     int lines = 0;
@@ -274,6 +303,13 @@ int main(int argc, char * argv[]){
     file.close();
     cout << "[?] Closed file" << endl;
 	set<int> cover;
-    //depthFirstSearch(graph);
-	greedy(graph, cover);
+	//graph_copy = (graph);
+
+    depthFirstSearch(graph);
+
+    //auto greedy_begin = std::chrono::high_resolution_clock::now();
+    //greedy(graph, cover);
+    //auto greedy_end = std::chrono::high_resolution_clock::now();
+    //auto greedy_elapsed = std::chrono::duration_cast<std::chrono::nanoseconds>(greedy_end - greedy_begin);
+    //cout << "Dfs time elapsed: " << fixed << greedy_elapsed.count() * 1e-9 << setprecision(5) << " sec " << endl;
 }

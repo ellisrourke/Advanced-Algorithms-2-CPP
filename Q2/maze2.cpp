@@ -6,7 +6,7 @@
 #include <string>
 #include <time.h>
 #include <vector>
-
+#define ROWS 55
 using namespace std;
 class Cell
 {
@@ -127,9 +127,9 @@ public:
         cout << endl;
     }
 
-    void set_index(int index)
+    void set_index(int i)
     {
-        index = index;
+        index = i;
     }
     int get_index()
     {
@@ -209,7 +209,7 @@ int main()
     int total_cells = rows * collumns;
     DisjointSet cells(total_cells);
 
-    Cell maze[rows][collumns];
+    Cell maze[ROWS][ROWS];
     int index = 0;
     //init all cells in the maze
     for (int i = 0; i < rows; i++)
@@ -239,6 +239,7 @@ int main()
         maze[i][0].set_border(3);
     }
 
+    /*
     while (cells.return_sets() > 1)
     {
         int row = (rand() % rows);
@@ -254,6 +255,7 @@ int main()
             {
                 if (cells.find(random_wall) != cells.find(random_wall - collumns))
                 {
+
                     cells.union_sets(random_wall, (random_wall - collumns));
                     maze[row][collumn].remove_wall(0);
                     maze[row - 1][collumn].remove_wall(1);
@@ -262,7 +264,7 @@ int main()
             break;
         case 1:
             if (!maze[row][collumn].border_exists(1))
-            {
+                {
                 if (cells.find(random_wall) != cells.find(random_wall + collumns))
                 {
                     cells.union_sets(random_wall, (random_wall + collumns));
@@ -294,7 +296,7 @@ int main()
             }
             break;
         }
-    }
+    }*/
 
     int start = rand() % rows;
     int end = rand() % collumns;
