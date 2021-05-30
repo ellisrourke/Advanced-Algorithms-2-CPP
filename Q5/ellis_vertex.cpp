@@ -69,25 +69,6 @@ void recursive_depthFirstSearch(unordered_map<int, Node> &graph, set<int> &curre
             }
         }
 
-        /*int n = graph.size();
-        for (int i = 0; i < branches; i++) {
-            int min_node = 0;
-            double min_deg = (double) INT_MAX;
-            for (int j = 0; j < n; j++) {
-                int randomNode = (rand() % options.size()) - 1;
-                auto it = options.begin();
-                advance(it, randomNode);
-                auto node = graph.find(*it);
-                node->second.score = node->second.degree * node->second.pnFactor * 1.0;
-                if (node->second.score < min_deg) {
-                    min_deg = node->second.score;
-                    min_node = *it;
-                }
-            }
-            duplicate_cover.insert(min_node);
-            options.erase(min_node);
-        }*/
-
     for (int it : duplicate_cover) {
         auto vector = graph.find(it);
         bool remove = true;
