@@ -204,12 +204,12 @@ public:
 int main()
 {
     srand(time(NULL));
-    int rows = 55;
-    int collumns = 55;
+    int rows = 5;
+    int collumns = 5;
     int total_cells = rows * collumns;
     DisjointSet cells(total_cells);
 
-    Cell maze[ROWS][ROWS];
+    Cell maze[rows][collumns];
     int index = 0;
     //init all cells in the maze
     for (int i = 0; i < rows; i++)
@@ -224,7 +224,7 @@ int main()
     //set border walls
     for (int i = 0; i < collumns; i++)
     {
-        maze[0][1].set_border(0);
+        maze[0][i].set_border(0);
     }
     for (int i = 0; i < collumns; i++)
     {
@@ -239,14 +239,21 @@ int main()
         maze[i][0].set_border(3);
     }
 
-    /*
+
     while (cells.return_sets() > 1)
     {
         int row = (rand() % rows);
         int collumn = (rand() % collumns);
         int wall = (rand() % 4);
 
+        //cout << "Row " << row << endl;
+        //cout << "Col " << collumn << endl;
+        //cout << "Wall " << wall << endl;
+        //cout << "------" << endl;
+
+
         int random_wall = maze[row][collumn].get_index();
+
 
         switch (wall)
         {
@@ -296,17 +303,18 @@ int main()
             }
             break;
         }
-    }*/
+
+    }
 
     int start = rand() % rows;
     int end = rand() % collumns;
     maze[start][0].remove_wall(3);
     maze[end][collumns - 1].remove_wall(2);
+    cout << "Start " << start << endl;
+    cout << "End " << end << endl;
 
-    for (int i = 0; i < rows; i++)
-    {
-        for (int j = 0; j < collumns; j++)
-        {
+    for (int i = 0; i < rows; i++){
+        for (int j = 0; j < collumns; j++){
             cout << "Cell " << setw(2) << right << maze[i][j].get_index() + 1 << ":";
             maze[i][j].display_walls();
         }
