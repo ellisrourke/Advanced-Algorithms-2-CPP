@@ -13,13 +13,14 @@
   <component name="ChangeListManager">
     <list default="true" id="4657cef6-394b-4d88-9af7-a9c7f84c6541" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AdvancedAlgorithms_report_2.docx" beforeDir="false" afterPath="$PROJECT_DIR$/AdvancedAlgorithms_report_2.docx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Q2/maze2.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Q2/maze2.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/Advanced_Algorithms_Assignment_2.exe" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Advanced_Algorithms_Assignment_2.exe" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Advanced_Algorithms_Assignment_2.dir/Q2/maze2.cpp.obj" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Advanced_Algorithms_Assignment_2.dir/Q2/maze2.cpp.obj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Advanced_Algorithms_Assignment_2.dir/objects.a" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Advanced_Algorithms_Assignment_2.dir/objects.a" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Q1/rb-tree.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Q2/maze2.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Q3/rb.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Q4/b2.exe" beforeDir="false" afterPath="$PROJECT_DIR$/Q4/b2.exe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Q4/bacon2.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Q5/e.exe" beforeDir="false" afterPath="$PROJECT_DIR$/Q5/e.exe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Q5/ellis_vertex.cpp" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/~WRL0005.tmp" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -127,7 +128,8 @@
       <workItem from="1622263256775" duration="599000" />
       <workItem from="1622341178774" duration="6180000" />
       <workItem from="1622530141111" duration="594000" />
-      <workItem from="1622534137872" duration="1663000" />
+      <workItem from="1622534137872" duration="2243000" />
+      <workItem from="1622853144264" duration="2298000" />
     </task>
     <servers />
   </component>
